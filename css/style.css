@@ -742,60 +742,170 @@ strong { color: var(--text); font-weight: 600; }
 }
 .hero__socials { justify-content: center; }
 
-/* Profile photo + rotating gradient ring */
-.avatar {
+/* Quick stats under the buttons */
+.hero__stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+.hero__stats li { display: grid; gap: 2px; text-align: center; }
+.hero__stats li + li { padding-left: var(--s-3); border-left: 1px solid var(--border-strong); }
+.hero__stats strong {
+  font-family: var(--font-head);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  background: var(--grad-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero__stats span { font-size: var(--fs-xs); color: var(--muted); }
+
+/* ---------- Portrait: cut-out photo on a gradient disc ----------
+   --w is the disc diameter; the box is taller than the disc so the
+   head can rise above the circle while the shoulders are clipped by it. */
+.portrait {
+  --w: 260px;
   position: relative;
-  width: clamp(220px, 62vw, 300px);
+  width: var(--w);
+  height: calc(var(--w) * 1.18);
+  margin-top: var(--s-2);
+}
+.portrait__disc {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   aspect-ratio: 1;
-}
-.avatar__ring {
-  position: absolute;
-  inset: -6px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, #6366F1, #8B5CF6, #22D3EE, #6366F1);
-  animation: spin 6s linear infinite;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.25), transparent 45%),
+    linear-gradient(150deg, #8B5CF6 0%, #6366F1 45%, #22D3EE 130%);
+  box-shadow:
+    0 0 0 8px rgba(99, 102, 241, 0.12),
+    0 30px 80px -10px rgba(99, 102, 241, 0.55);
 }
-.avatar__ring::after {
+.portrait__disc::after {
+  /* soft inner shading so the suit separates from the disc */
   content: "";
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  background: inherit;
-  filter: blur(40px);
-  opacity: 0.35;
-  z-index: -1;
-}
-.avatar__img {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 6px solid var(--bg);
-  background: var(--bg-elev);
+  background: radial-gradient(circle at 50% 110%, rgba(10, 10, 15, 0.55), transparent 60%);
+}
+.portrait__orbit {
+  position: absolute;
+  left: -22px;
+  right: -22px;
+  bottom: -22px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px dashed var(--border-strong);
+  animation: spin 40s linear infinite;
+}
+.portrait__orbit i {
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px var(--accent);
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.avatar__chip {
+/* Frame = disc + everything above its centre line (lets the head pop out) */
+.portrait__frame {
   position: absolute;
-  z-index: 2;
+  inset: 0;
+  -webkit-mask-image:
+    linear-gradient(#000, #000),
+    radial-gradient(circle calc(var(--w) / 2) at 50% calc(100% - var(--w) / 2), #000 99.5%, transparent 100%);
+  -webkit-mask-size: 100% calc(100% - var(--w) / 2), 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-image:
+    linear-gradient(#000, #000),
+    radial-gradient(circle calc(var(--w) / 2) at 50% calc(100% - var(--w) / 2), #000 99.5%, transparent 100%);
+  mask-size: 100% calc(100% - var(--w) / 2), 100% 100%;
+  mask-repeat: no-repeat;
+}
+.portrait__img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35));
+}
+/* If the cut-out is missing, fall back to the square photo inside the disc */
+.portrait__img.is-fallback {
+  top: auto;
+  height: var(--w);
+  width: var(--w);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Floating glass badges */
+.portrait__badge, .portrait__chip {
+  position: absolute;
+  z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  color: var(--text);
+  background: var(--nav-bg);
+  border: 1px solid var(--border-strong);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  animation: float 6s ease-in-out infinite;
+  white-space: nowrap;
+}
+.portrait__badge { padding: 10px 14px; border-radius: var(--r); font-size: 0.75rem; line-height: 1.25; color: var(--muted); }
+.portrait__badge strong { line-height: 1.4; color: var(--text); }
+.portrait__badge strong { font-size: 0.9rem; font-family: var(--font-body); font-weight: 600; }
+.portrait__badge-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  color: #fff;
+  background: var(--grad);
+}
+.portrait__badge-icon--alt { background: linear-gradient(135deg, #0891B2, #22D3EE); }
+.portrait__badge--exp { left: -18%; top: 48%; }
+.portrait__badge--sites { right: -14%; bottom: 8%; animation-delay: -3s; }
+.portrait__chip {
+  right: -8%;
+  top: 22%;
   padding: 8px 14px;
   border-radius: var(--r-full);
   font-size: var(--fs-xs);
   font-weight: 600;
-  white-space: nowrap;
-  color: var(--text);
-  background: var(--nav-bg);
-  border: 1px solid var(--border-strong);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  box-shadow: var(--shadow);
-  animation: float 5s ease-in-out infinite;
+  animation-delay: -1.5s;
 }
-.avatar__chip i { color: var(--accent); }
-.avatar__chip--1 { top: 12%; left: -8%; }
-.avatar__chip--2 { bottom: 10%; right: -8%; animation-delay: -2.5s; }
+.portrait__chip i { color: var(--accent); }
+
+/* Phones: keep the photo clean — badges hidden (the stats row covers them),
+   the role tag sits centred on the bottom of the circle */
+@media (max-width: 767px) {
+  .portrait__badge { display: none; }
+  .portrait__chip {
+    top: auto;
+    right: 0;
+    left: 0;
+    bottom: -14px;
+    width: max-content;
+    margin-inline: auto;
+  }
+}
 @keyframes float { 50% { transform: translateY(-10px); } }
 
 /* Scroll-down indicator */
@@ -2132,7 +2242,7 @@ a.info-card__value:hover { color: var(--accent); }
    ========================================================================= */
 @media (min-width: 480px) {
   :root { --gutter: 24px; }
-  .avatar { width: 300px; }
+  .portrait { --w: 300px; }
   .form-row { grid-template-columns: 1fr 1fr; }
   .toasts { left: auto; right: var(--s-3); justify-items: end; bottom: calc(var(--s-3) + 64px); }
   .back-to-top { right: var(--s-3); bottom: var(--s-3); }
@@ -2175,7 +2285,8 @@ a.info-card__value:hover { color: var(--accent); }
   .hero__content { text-align: left; }
   .hero__tagline { margin-inline: 0; }
   .hero__cta, .hero__socials { justify-content: flex-start; }
-  .avatar { width: clamp(340px, 30vw, 420px); }
+  .portrait { --w: clamp(340px, 29vw, 420px); }
+  .hero__stats { justify-content: flex-start; }
   .blob--1 { width: 600px; height: 600px; }
   .blob--2 { width: 520px; height: 520px; }
 
@@ -2231,7 +2342,7 @@ a.info-card__value:hover { color: var(--accent); }
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
-  .blob, .avatar__ring, .marquee__track, .avatar__chip, .bento__globe span { animation: none !important; }
+  .blob, .portrait__orbit, .portrait__badge, .portrait__chip, .marquee__track, .bento__globe span { animation: none !important; }
   .marquee__row { overflow-x: auto; }
   .js [data-reveal], .js [data-hero], .js .hero__title .line-inner { opacity: 1; transform: none; }
   .caret { animation: none; }

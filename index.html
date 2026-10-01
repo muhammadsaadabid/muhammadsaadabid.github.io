@@ -174,24 +174,36 @@
             </a>
           </div>
 
+          <ul class="hero__stats" data-hero aria-label="Highlights">
+            <li><strong>3+</strong><span>Years experience</span></li>
+            <li><strong>10+</strong><span>Live websites</span></li>
+            <li><strong>3</strong><span>Companies</span></li>
+          </ul>
+
           <div class="socials hero__socials" data-hero data-socials></div>
         </div>
 
         <div class="hero__visual" data-hero>
-          <div class="avatar">
-            <span class="avatar__ring" aria-hidden="true"></span>
-            <div class="avatar__img media">
-              <div class="ph" aria-hidden="true">
-                <i class="fa-regular fa-image"></i><span>profile.jpg</span><small>800 × 800</small>
-              </div>
-              <img src="images/profile.jpg" alt="Portrait of Muhammad Saad" width="800" height="800"
-                   fetchpriority="high" onerror="this.classList.add('is-missing')">
+          <!-- Portrait: cut-out photo standing on a gradient disc (head pops out of the circle) -->
+          <div class="portrait">
+            <span class="portrait__orbit" aria-hidden="true"><i></i></span>
+            <span class="portrait__disc" aria-hidden="true"></span>
+            <div class="portrait__frame">
+              <img class="portrait__img" src="images/profile-cutout.png" alt="Portrait of Muhammad Saad"
+                   width="764" height="900" fetchpriority="high"
+                   onerror="this.onerror=null;this.src='images/profile.jpg';this.classList.add('is-fallback')">
             </div>
-            <div class="avatar__chip avatar__chip--1" aria-hidden="true">
-              <i class="fa-solid fa-code"></i> Full Stack
+
+            <div class="portrait__badge portrait__badge--exp" aria-hidden="true">
+              <span class="portrait__badge-icon"><i class="fa-solid fa-user-tie"></i></span>
+              <span><strong>Team Lead</strong><br>at Burraq Inc</span>
             </div>
-            <div class="avatar__chip avatar__chip--2" aria-hidden="true">
-              <i class="fa-brands fa-wordpress"></i> WordPress
+            <div class="portrait__badge portrait__badge--sites" aria-hidden="true">
+              <span class="portrait__badge-icon portrait__badge-icon--alt"><i class="fa-brands fa-wordpress"></i></span>
+              <span><strong>WordPress &amp; Shopify</strong><br>Expert</span>
+            </div>
+            <div class="portrait__chip" aria-hidden="true">
+              <i class="fa-solid fa-code"></i> Full Stack Developer
             </div>
           </div>
         </div>
