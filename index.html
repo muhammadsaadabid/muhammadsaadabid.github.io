@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muhammad Saad | Full Stack Developer — Karachi, Pakistan</title>
+  <meta name="description" content="Muhammad Saad — Full Stack Developer, Project Manager and Team Lead in Karachi, Pakistan. I build fast, scalable web experiences with WordPress, Shopify, PHP, Node.js and Python.">
+  <meta name="author" content="Muhammad Saad">
+  <meta name="theme-color" content="#0A0A0F">
+  <link rel="canonical" href="https://muhammadsaadabid.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Muhammad Saad | Full Stack Developer">
+  <meta property="og:description" content="I build fast, scalable and beautiful web experiences — from WordPress & Shopify stores to full stack applications.">
+  <meta property="og:image" content="https://muhammadsaadabid.github.io/images/og-image.jpg">
+  <meta property="og:url" content="https://muhammadsaadabid.github.io/">
+  <meta property="og:site_name" content="Muhammad Saad">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Muhammad Saad | Full Stack Developer">
+  <meta name="twitter:description" content="Full Stack Developer, Project Manager & Team Lead based in Karachi, Pakistan.">
+  <meta name="twitter:image" content="https://muhammadsaadabid.github.io/images/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+
+  <!-- Apply saved theme + JS flag before first paint (prevents flash) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+        else if (window.matchMedia('(prefers-color-scheme: light)').matches) root.setAttribute('data-theme', 'light');
+      } catch (e) {}
+      root.classList.add('js');
+      // Safety net: if main.js fails to load, reveal everything anyway
+      setTimeout(function () { if (!window.__portfolioReady) root.classList.remove('js'); }, 4000);
+    })();
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Scripts (deferred — execute in order after HTML is parsed) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== PAGE LOADER ===================== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark">
+      <span class="loader__letter">M</span><span class="loader__letter">S</span>
+    </div>
+    <div class="loader__bar"><span></span></div>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <!-- Custom cursor (desktop only — enabled by JS) -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#home" class="logo" aria-label="Muhammad Saad — back to top">
+        <span class="logo__mark">MS</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <ul>
+          <li><a href="#home" class="nav__link">Home</a></li>
+          <li><a href="#about" class="nav__link">About</a></li>
+          <li><a href="#skills" class="nav__link">Skills</a></li>
+          <li><a href="#experience" class="nav__link">Experience</a></li>
+          <li><a href="#projects" class="nav__link">Projects</a></li>
+          <li><a href="#education" class="nav__link">Education</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+          <i class="fa-solid fa-sun theme-toggle__sun" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon theme-toggle__moon" aria-hidden="true"></i>
+        </button>
+        <a href="assets/resume.pdf" class="btn btn--primary btn--sm nav__cv" download data-magnetic>
+          <i class="fa-solid fa-download" aria-hidden="true"></i><span>Download CV</span>
+        </a>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile slide-in menu -->
+  <div class="mobile-menu__backdrop" id="menuBackdrop" hidden></div>
+  <aside class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation" aria-hidden="true">
+    <nav>
+      <ul>
+        <li><a href="#home" class="mobile-menu__link">Home</a></li>
+        <li><a href="#about" class="mobile-menu__link">About</a></li>
+        <li><a href="#skills" class="mobile-menu__link">Skills</a></li>
+        <li><a href="#experience" class="mobile-menu__link">Experience</a></li>
+        <li><a href="#projects" class="mobile-menu__link">Projects</a></li>
+        <li><a href="#education" class="mobile-menu__link">Education</a></li>
+        <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="assets/resume.pdf" class="btn btn--primary mobile-menu__cv" download>
+      <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+    </a>
+    <div class="socials mobile-menu__socials" data-socials></div>
+  </aside>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home" aria-label="Introduction" tabindex="-1">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="blob blob--1"></span>
+        <span class="blob blob--2"></span>
+        <span class="blob blob--3"></span>
+        <span class="hero__grid"></span>
+        <span class="hero__spot" id="heroSpot"></span>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__badge" data-hero>
+            <span class="pulse-dot" aria-hidden="true"></span> Available for freelance &amp; full-time work
+          </p>
+
+          <h1 class="hero__title">
+            <span class="line"><span class="line-inner">Hi, I'm</span></span>
+            <span class="line"><span class="line-inner gradient-text">Muhammad Saad</span></span>
+          </h1>
+
+          <p class="hero__role" data-hero>
+            <span class="sr-only">Full Stack Developer, Project Manager, Team Lead, Python Developer and WordPress Expert</span>
+            <span class="hero__role-text" id="typing" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+
+          <p class="hero__tagline" data-hero>
+            I build fast, scalable and beautiful web experiences — from WordPress &amp; Shopify
+            stores to full stack applications.
+          </p>
+
+          <div class="hero__cta" data-hero>
+            <a href="#projects" class="btn btn--primary" data-magnetic>
+              View My Work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#contact" class="btn btn--ghost" data-magnetic>
+              Hire Me <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="socials hero__socials" data-hero data-socials></div>
+        </div>
+
+        <div class="hero__visual" data-hero>
+          <div class="avatar">
+            <span class="avatar__ring" aria-hidden="true"></span>
+            <div class="avatar__img media">
+              <div class="ph" aria-hidden="true">
+                <i class="fa-regular fa-image"></i><span>profile.jpg</span><small>800 × 800</small>
+              </div>
+              <img src="images/profile.jpg" alt="Portrait of Muhammad Saad" width="800" height="800"
+                   fetchpriority="high" onerror="this.classList.add('is-missing')">
+            </div>
+            <div class="avatar__chip avatar__chip--1" aria-hidden="true">
+              <i class="fa-solid fa-code"></i> Full Stack
+            </div>
+            <div class="avatar__chip avatar__chip--2" aria-hidden="true">
+              <i class="fa-brands fa-wordpress"></i> WordPress
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+        <span class="scroll-indicator__mouse"><span></span></span>
+        <span class="scroll-indicator__label">Scroll</span>
+      </a>
+    </section>
+
+    <!-- ===================== ABOUT (bento grid) ===================== -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>01</span> About me</p>
+          <h2 class="section-title" id="about-title" data-reveal>
+            Turning ideas into <span class="gradient-text">reliable products</span>
+          </h2>
+        </header>
+
+        <div class="bento">
+          <!-- Photo -->
+          <div class="bento__tile bento__photo" data-reveal data-spotlight>
+            <div class="about__img media">
+              <div class="ph" aria-hidden="true">
+                <i class="fa-regular fa-image"></i><span>about.jpg</span><small>600 × 750</small>
+              </div>
+              <img src="images/about.jpg" alt="Muhammad Saad at work" width="600" height="750"
+                   loading="lazy" onerror="this.classList.add('is-missing')">
+            </div>
+            <div class="bento__photo-tag">
+              <span class="pulse-dot" aria-hidden="true"></span> Open to new projects
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div class="bento__tile bento__bio glass" data-reveal data-spotlight>
+            <p class="bento__label"><i class="fa-solid fa-user" aria-hidden="true"></i> Who I am</p>
+            <p class="about__text">
+              I'm a Full Stack Developer based in <strong>Karachi, Pakistan</strong> with 3+ years of
+              experience building websites, online stores and web applications. I'm currently
+              <strong>Project Manager, Team Lead and Full Stack Developer at Burraq Inc</strong>, where
+              I lead a development team and take projects from first call to launch, including
+              hosting and server management.
+            </p>
+            <p class="about__text">
+              My roots are in WordPress, WooCommerce and Shopify, and I've grown into full stack work
+              with PHP, Node.js and MySQL/MongoDB. Recently I've been expanding into
+              <strong>Python development</strong> for automation and backend tooling.
+            </p>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="bento__tile bento__stats glass" data-reveal data-spotlight>
+            <ul class="stats" id="stats" aria-label="Career statistics"></ul>
+          </div>
+
+          <!-- Currently -->
+          <div class="bento__tile bento__now glass" data-reveal data-spotlight>
+            <p class="bento__label"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Currently</p>
+            <h3 class="bento__title">Leading the dev team at <span class="gradient-text">Burraq Inc</span></h3>
+            <ul class="now-list">
+              <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Managing projects end-to-end</li>
+              <li><i class="fa-solid fa-code" aria-hidden="true"></i> Building full stack web apps</li>
+              <li><i class="fa-brands fa-python" aria-hidden="true"></i> Learning &amp; shipping with Python</li>
+            </ul>
+          </div>
+
+          <!-- Location + live local time -->
+          <div class="bento__tile bento__loc glass" data-reveal data-spotlight>
+            <div class="bento__globe" aria-hidden="true"><span></span><span></span><span></span></div>
+            <p class="bento__label"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Based in</p>
+            <h3 class="bento__title">Karachi, Pakistan</h3>
+            <p class="bento__time">
+              <span id="localTime">--:--</span> <span class="bento__tz">PKT · UTC+5</span>
+            </p>
+            <p class="bento__muted">Working with clients worldwide</p>
+          </div>
+
+          <!-- CTA -->
+          <div class="bento__tile bento__cta" data-reveal data-spotlight>
+            <p class="bento__label"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Résumé</p>
+            <h3 class="bento__title">Want the full story?</h3>
+            <div class="bento__cta-actions">
+              <a href="assets/resume.pdf" class="btn btn--light" download data-magnetic>
+                <i class="fa-solid fa-download" aria-hidden="true"></i> Download CV
+              </a>
+              <a href="#contact" class="bento__arrow" aria-label="Go to contact section">
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>02</span> What I do</p>
+          <h2 class="section-title" id="services-title" data-reveal>
+            Services I <span class="gradient-text">offer</span>
+          </h2>
+          <p class="section-sub" data-reveal>
+            From a single landing page to a full product and the team that builds it.
+          </p>
+        </header>
+        <div class="services__grid" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>03</span> Skills</p>
+          <h2 class="section-title" id="skills-title" data-reveal>
+            My <span class="gradient-text">toolkit</span>
+          </h2>
+          <p class="section-sub" data-reveal>
+            The technologies and practices I use to design, build, ship and manage web projects.
+          </p>
+        </header>
+        <div class="skills__grid" id="skillsGrid"></div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__row"><div class="marquee__track" id="marqueeA"></div></div>
+        <div class="marquee__row marquee__row--reverse"><div class="marquee__track" id="marqueeB"></div></div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>04</span> Experience</p>
+          <h2 class="section-title" id="experience-title" data-reveal>
+            Where I've <span class="gradient-text">worked</span>
+          </h2>
+        </header>
+        <div class="timeline" id="timeline">
+          <div class="timeline__line" aria-hidden="true"><span class="timeline__progress" id="timelineProgress"></span></div>
+          <ol class="timeline__list" id="timelineList"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>05</span> Projects</p>
+          <h2 class="section-title" id="projects-title" data-reveal>
+            Selected <span class="gradient-text">work</span>
+          </h2>
+          <p class="section-sub" data-reveal>A few projects I've designed, built or led. Click any card for details.</p>
+        </header>
+
+        <div class="filters" id="projectFilters" role="toolbar" aria-label="Filter projects" data-reveal></div>
+        <div class="projects__grid" id="projectsGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section class="section education" id="education" aria-labelledby="education-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>06</span> Education</p>
+          <h2 class="section-title" id="education-title" data-reveal>
+            Education &amp; <span class="gradient-text">certification</span>
+          </h2>
+        </header>
+        <div class="education__grid" id="educationGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <header class="section-head section-head--center">
+          <p class="eyebrow" data-reveal><span>07</span> Testimonials</p>
+          <h2 class="section-title" id="testimonials-title" data-reveal>
+            What clients <span class="gradient-text">say</span>
+          </h2>
+        </header>
+
+        <div class="slider" id="slider" data-reveal aria-roledescription="carousel" aria-label="Client testimonials">
+          <div class="slider__viewport">
+            <div class="slider__track" id="sliderTrack"></div>
+          </div>
+          <div class="slider__controls">
+            <button class="icon-btn slider__arrow" id="sliderPrev" type="button" aria-label="Previous testimonial">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+            </button>
+            <div class="slider__dots" id="sliderDots" role="group" aria-label="Choose testimonial"></div>
+            <button class="icon-btn slider__arrow" id="sliderNext" type="button" aria-label="Next testimonial">
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-reveal><span>08</span> Contact</p>
+          <h2 class="section-title" id="contact-title" data-reveal>
+            Let's build something <span class="gradient-text">great together</span>
+          </h2>
+          <p class="section-sub" data-reveal>
+            Have a project, a role or just a question? Send a message — I usually reply within 24 hours.
+          </p>
+        </header>
+
+        <div class="contact__grid">
+          <ul class="contact__info">
+            <li data-reveal>
+              <a class="info-card glass" data-spotlight href="mailto:msaadabid123@gmail.com">
+                <span class="info-card__icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+                <span class="info-card__body">
+                  <span class="info-card__label">Email</span>
+                  <span class="info-card__value">msaadabid123@gmail.com</span>
+                </span>
+              </a>
+            </li>
+            <li data-reveal>
+              <div class="info-card glass" data-spotlight>
+                <span class="info-card__icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+                <span class="info-card__body">
+                  <span class="info-card__label">Phone / WhatsApp</span>
+                  <a class="info-card__value" href="tel:+923172905906">+92 317 2905906</a>
+                </span>
+                <a class="info-card__action" href="https://wa.me/923172905906" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </a>
+              </div>
+            </li>
+            <li data-reveal>
+              <div class="info-card glass" data-spotlight>
+                <span class="info-card__icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+                <span class="info-card__body">
+                  <span class="info-card__label">Location</span>
+                  <span class="info-card__value">Karachi, Pakistan</span>
+                </span>
+              </div>
+            </li>
+            <li data-reveal>
+              <div class="quick-chat" data-spotlight>
+                <p class="bento__label"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Prefer a quick chat?</p>
+                <p class="quick-chat__text">Message me on WhatsApp and I'll usually reply within a few hours.</p>
+                <a href="https://wa.me/923172905906" class="btn btn--light" target="_blank" rel="noopener" data-magnetic>
+                  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Chat on WhatsApp
+                </a>
+              </div>
+            </li>
+          </ul>
+
+          <form class="contact__form glass" id="contactForm" novalidate data-reveal data-spotlight>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required aria-describedby="name-error">
+                <p class="field__error" id="name-error" role="alert"></p>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="email-error">
+                <p class="field__error" id="email-error" role="alert"></p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="What's it about?" required aria-describedby="subject-error">
+              <p class="field__error" id="subject-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project…" required aria-describedby="message-error"></textarea>
+              <p class="field__error" id="message-error" role="alert"></p>
+            </div>
+            <!-- Honeypot: hidden from humans, bots fill it in -->
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn--primary btn--block" id="submitBtn" data-magnetic>
+              <span class="btn__label">Send Message</span>
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#home" class="logo" aria-label="Muhammad Saad — back to top"><span class="logo__mark">MS</span></a>
+          <p>Full Stack Developer, Project Manager &amp; Team Lead based in Karachi, Pakistan.</p>
+        </div>
+        <nav class="footer__links" aria-label="Footer">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="socials" data-socials></div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> Muhammad Saad. All rights reserved.</p>
+        <p>Built with HTML, CSS &amp; vanilla JavaScript.</p>
+      </div>
+      <p class="footer__wordmark" aria-hidden="true">Muhammad Saad</p>
+    </div>
+  </footer>
+
+  <!-- Back to top with circular progress ring -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="back-to-top__track" cx="24" cy="24" r="22"></circle>
+      <circle class="back-to-top__ring" id="backToTopRing" cx="24" cy="24" r="22"></circle>
+    </svg>
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Project modal -->
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="document">
+      <button class="icon-btn modal__close" type="button" aria-label="Close project details" data-close>
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast notifications -->
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <noscript>
+    <style>.loader,.cursor-dot,.cursor-ring{display:none!important}</style>
+  </noscript>
+</body>
+</html>

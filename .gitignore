@@ -1,0 +1,8 @@
+# Original source photos (the site uses the resized profile.jpg / about.jpg)
+images/IMG_6910~2.JPG
+images/IMG-20250208-WA0075.jpg
+# OS / editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
