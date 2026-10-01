@@ -39,8 +39,8 @@ window.PORTFOLIO = {
      `icon` is a Font Awesome class (https://fontawesome.com/search?o=r&m=free)
      ----------------------------------------------------------------------- */
   social: [
-    { label: "GitHub",   icon: "fa-brands fa-github",      url: "https://github.com/your-username" },
-    { label: "LinkedIn", icon: "fa-brands fa-linkedin-in", url: "https://www.linkedin.com/in/your-username" },
+    { label: "GitHub",   icon: "fa-brands fa-github",      url: "https://github.com/muhammadsaadabid" },
+    { label: "LinkedIn", icon: "fa-brands fa-linkedin-in", url: "https://www.linkedin.com/in/msaad-abid/" },
     { label: "Email",    icon: "fa-solid fa-envelope",     url: "mailto:msaadabid123@gmail.com" },
     { label: "WhatsApp", icon: "fa-brands fa-whatsapp",    url: "https://wa.me/923172905906" }
   ],

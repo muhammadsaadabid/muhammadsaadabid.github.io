@@ -20,7 +20,7 @@ Everything that changes often is in **`js/data.js`**. Edit it, save, and refresh
 | What | Where in data.js |
 |---|---|
 | Name, email, phone, WhatsApp, typing roles | `profile` |
-| GitHub / LinkedIn URLs | `social` (replace `your-username`) |
+| GitHub / LinkedIn URLs | `social` |
 | About stats (years, projects, clients…) | `stats`. **Update the Projects and Clients numbers.** |
 | "What I do" service cards | `services` |
 | Skill cards and scrolling marquee | `skills`, `marquee` |
