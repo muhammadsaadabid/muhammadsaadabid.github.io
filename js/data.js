@@ -251,15 +251,15 @@ window.PORTFOLIO = {
 
   projects: [
     {
-      title: "Burraq Inc",
+      title: "Smart Ledger Solutions",
       category: "fullstack",
       featured: true,   // shown as a large card on desktop (use on ONE project)
-      image: "images/projects/burraq-inc.jpg",
-      description: "Corporate website for a digital agency, with bold animated sections and a clear services funnel.",
-      details: "Company website for Burraq Inc, a digital agency offering web, design and marketing services. Built as a custom PHP site with smooth GSAP animations and Swiper sliders.",
-      features: ["Animated hero and scroll effects", "Services, portfolio and blog pages", "Quote request flow"],
-      tech: ["PHP", "Bootstrap", "GSAP", "Swiper", "jQuery"],
-      live: "https://burraqinc.com",
+      image: "images/projects/smart-ledger-solutions.jpg",
+      description: "UK business services platform for company formation, accounting and compliance.",
+      details: "Website for Smart Ledger Solutions offering UK company formation, accounting, tax filing, VAT, payroll and compliance services. Custom PHP build.",
+      features: ["Service overview dashboard UI", "Company formation and accounting pages", "Get-started onboarding flow"],
+      tech: ["PHP", "JavaScript", "CSS"],
+      live: "https://smartledgersolutions.co.uk",
       github: ""
     },
     {
@@ -329,17 +329,6 @@ window.PORTFOLIO = {
       github: ""
     },
     {
-      title: "Smart Ledger Solutions",
-      category: "fullstack",
-      image: "images/projects/smart-ledger-solutions.jpg",
-      description: "UK business services platform for company formation, accounting and compliance.",
-      details: "Website for Smart Ledger Solutions offering UK company formation, accounting, tax filing, VAT, payroll and compliance services. Custom PHP build.",
-      features: ["Service overview dashboard UI", "Company formation and accounting pages", "Get-started onboarding flow"],
-      tech: ["PHP", "JavaScript", "CSS"],
-      live: "https://smartledgersolutions.co.uk",
-      github: ""
-    },
-    {
       title: "Virtual Visionare",
       category: "fullstack",
       image: "images/projects/virtual-visionare.jpg",
@@ -359,6 +348,17 @@ window.PORTFOLIO = {
       features: ["Live price calculator", "Order and quote forms", "Reviews and university logos"],
       tech: ["PHP", "Bootstrap", "Swiper", "JavaScript"],
       live: "https://www.assignmentguru.co.uk",
+      github: ""
+    },
+    {
+      title: "Burraq Inc",
+      category: "fullstack",
+      image: "images/projects/burraq-inc.jpg",
+      description: "Corporate website for a digital agency, with bold animated sections and a clear services funnel.",
+      details: "Company website for Burraq Inc, a digital agency offering web, design and marketing services. Built as a custom PHP site with smooth GSAP animations and Swiper sliders.",
+      features: ["Animated hero and scroll effects", "Services, portfolio and blog pages", "Quote request flow"],
+      tech: ["PHP", "Bootstrap", "GSAP", "Swiper", "jQuery"],
+      live: "https://burraqinc.com",
       github: ""
     }
   ],
